@@ -29,7 +29,7 @@ Order By Funds_raised_millions Desc;
 
 -- 4) Companies with the biggest single Layoff
 SELECT company, total_laid_off
-FROM world_layoffs.layoffs_staging
+FROM layoffs_staging
 ORDER BY 2 DESC
 LIMIT 5;
 -- now that's just on a single day
