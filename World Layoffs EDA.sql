@@ -1,61 +1,109 @@
 -- Exploratory Data Analysis
 
+-- Here we are jsut going to explore the data and find trends or patterns or anything interesting like outliers
+
+-- Normally when you start the EDA process you have some idea of what you're looking for
+
+-- With this info we are just going to look around and see what we find!
+
+
 Select * 
 From layoffs_staging2; 
 
--- 1 
+-- 1) Looking at Percentage to see how big these layoffs were
 Select Max(total_laid_off), Max(percentage_laid_off)
-From layoffs_staging2;
+From layoffs_staging2
+Where percentage_laid_off is not null;
 
+-- 2) Which companies had 1 which is basically 100 percent of they company laid off
 Select * 
 From layoffs_staging2
-Where percentage_laid_off = 1
+Where percentage_laid_off = 1;
+-- These are mostly startups it looks like who all went out of business during this time
+
+-- 3) If we order by funcs_raised_millions we can see how big some of these companies were
+Select * 
+From layoffs_staging2
+Where percentage_laid_off = 1;  
 Order By Funds_raised_millions Desc;
 
+-- 4) Companies with the biggest single Layoff
+SELECT company, total_laid_off
+FROM world_layoffs.layoffs_staging
+ORDER BY 2 DESC
+LIMIT 5;
+-- now that's just on a single day
+
+-- Companies with the most Total Layoffs
 Select company, Sum(total_laid_off)
 From layoffs_staging2
 Group By Company
-Order By 2 Desc;
+Order By 2 Desc
+Limit 10;
 
-Select Min(`date`), Max(`date`)
-From layoffs_staging2;
+-- by location
+SELECT location, SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY location
+ORDER BY 2 DESC
+LIMIT 10;
+-- This it total in the past 3 years or in the dataset
+
+SELECT country, SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY country
+ORDER BY 2 DESC;
+
+SELECT YEAR(date), SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY YEAR(date)
+ORDER BY 1 ASC;
 
 
-Select industry, Sum(total_laid_off)
-From layoffs_staging2
-Group By industry
-Order By 2 Desc;
+SELECT industry, SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY industry
+ORDER BY 2 DESC;
 
-Select substr(`date`,1,7) AS `MONTH` ,Sum(Total_laid_off)
-From layoffs_staging2
-Where substr(`date`,1,7) is not NUll
-Group By `Month`
-Order By 1 Asc;
 
-With Rolling_total as 
+SELECT stage, SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY stage
+ORDER BY 2 DESC;
+
+-- Earlier we looked at Companies with the most Layoffs. Now let's look at that per year. 
+
+WITH Company_Year AS 
 (
-Select substr(`date`,1,7) AS `Month`, Sum(Total_laid_off) as total_off
-From layoffs_staging2
-Where substr(`date`,1,7) is not NUll
-Group By `Month`
-Order By 1 Asc
+  SELECT company, YEAR(date) AS years, SUM(total_laid_off) AS total_laid_off
+  FROM layoffs_staging2
+  GROUP BY company, YEAR(date)
 )
-Select `Month`, total_off,
-Sum(Total_off) over (order by `Month`) as rolling_total
-From Rolling_total;
+, Company_Year_Rank AS (
+  SELECT company, years, total_laid_off, DENSE_RANK() OVER (PARTITION BY years ORDER BY total_laid_off DESC) AS ranking
+  FROM Company_Year
+)
+SELECT company, years, total_laid_off, ranking
+FROM Company_Year_Rank
+WHERE ranking <= 3
+AND years IS NOT NULL
+ORDER BY years ASC, total_laid_off DESC;
 
 
-With Company_Year (company, years, total_laid_off) as 
-( 
-Select Company, Year(`date`), Sum(Total_laid_off)
-From layoffs_staging2
-Group By Company, Year(`date`) 
-), Company_Year_Rank as  
-(Select * ,
-Dense_Rank() Over (partition by Years Order By total_laid_off desc) as ranking
-From Company_Year
-Where Years is not Null
+-- Rolling Total of Layoffs Per Month
+SELECT SUBSTRING(date,1,7) as dates, SUM(total_laid_off) AS total_laid_off
+FROM layoffs_staging2
+GROUP BY dates
+ORDER BY dates ASC;
+
+-- now use it in a CTE so we can query off of it
+WITH DATE_CTE AS 
+(
+SELECT SUBSTRING(date,1,7) as dates, SUM(total_laid_off) AS total_laid_off
+FROM layoffs_staging2
+GROUP BY dates
+ORDER BY dates ASC
 )
-Select * 
-From Company_Year_Rank
-Where Ranking <= 5;
+SELECT dates, SUM(total_laid_off) OVER (ORDER BY dates ASC) as rolling_total_layoffs
+FROM DATE_CTE
+ORDER BY dates ASC;
