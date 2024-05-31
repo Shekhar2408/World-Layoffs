@@ -31,7 +31,7 @@ Select * From layoffs_staging;
 -- First let's check for duplicates
 SELECT company, industry, total_laid_off,`date`,
 ROW_NUMBER() OVER (PARTITION BY company, industry, total_laid_off,`date`) AS row_num
-FROM world_layoffs.layoffs_staging;
+FROM layoffs_staging;
 
 
 -- These are our real duplicates 
