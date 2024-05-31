@@ -21,7 +21,7 @@ From layoffs_staging2
 Where percentage_laid_off = 1;
 -- These are mostly startups it looks like who all went out of business during this time
 
--- 3) If we order by funcs_raised_millions we can see how big some of these companies were
+-- 3) If we order by funds_raised_millions we can see how big some of these companies were
 Select * 
 From layoffs_staging2
 Where percentage_laid_off = 1;  
