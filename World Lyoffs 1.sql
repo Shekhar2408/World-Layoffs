@@ -98,7 +98,7 @@ ORDER BY industry;
 
 -- let's take a look at these
 SELECT *
-FROM world_layoffs.layoffs_staging2
+FROM layoffs_staging2
 WHERE company LIKE 'Bally%';
 -- nothing wrong here
 SELECT *
