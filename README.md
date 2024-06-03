@@ -5,7 +5,7 @@
 The objective of this project is to analyze worldwide layoffs that occurred between 2020 and 2023, utilizing MySQL for data storage, management, and analysis. By examining the data on layoffs, the project aims to identify trends, patterns, and factors influencing employment changes globally during this period.
 
 # Data Sources:
-**Global Layoff Databases:**  Gather data from reputable sources such as government reports, labor departments, news articles, and industry databases.
+#  Gather data from reputable sources such as government reports, labor departments, news articles, and industry databases.
 
 **Company Reports:**  Collect layoff information disclosed by companies through financial reports, press releases, and official statements.
 
