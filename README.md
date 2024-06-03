@@ -14,19 +14,20 @@ The objective of this project is to analyze worldwide layoffs that occurred betw
 # Database Schema:
 Design a MySQL database schema to efficiently store and manage the layoff data. The schema may include tables such as:
 
-    a) **Companies:** Information about the companies involved in layoffs (e.g., name, industry, location).
+a) **Companies:** Information about the companies involved in layoffs (e.g., name, industry, location).
     
-    b) **Layoffs:** Details of layoffs (e.g., date, number of employees affected, reasons).
+b) **Layoffs:** Details of layoffs (e.g., date, number of employees affected, reasons).
     
-    c) **Geographic Data:** Data related to geographic locations of layoffs (e.g., country, region).
+c) **Geographic Data:** Data related to geographic locations of layoffs (e.g., country, region).
     
-    d) **Industry Data:** Information about industries affected by layoffs.
+d) **Industry Data:** Information about industries affected by layoffs.
 
-**Data Processing:**
+# Data Processing:
 
-Data Collection: Gather and compile data from various sources into a structured format suitable for MySQL.
-Data Cleaning: Perform data cleaning and validation to ensure accuracy and consistency.
-Data Loading: Populate the MySQL database with the cleaned data.
+1) **Data Collection:** Gather and compile data from various sources into a structured format suitable for MySQL.
+2) **Data Cleaning:** Perform data cleaning and validation to ensure accuracy and consistency.
+3) **Data Loading:** Populate the MySQL database with the cleaned data.
+
 Analysis and Visualization:
 
 Trend Analysis: Analyze the temporal trends in layoffs, including monthly or yearly variations.
