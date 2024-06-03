@@ -30,7 +30,7 @@ d) **Industry Data:** Information about industries affected by layoffs.
    
 3) **Data Loading:** Populate the MySQL database with the cleaned data.
 
-# Analysis and Visualization:
+# Analysis:
 
 1) **Trend Analysis:** Analyze the temporal trends in layoffs, including monthly or yearly variations.
  
@@ -40,7 +40,6 @@ d) **Industry Data:** Information about industries affected by layoffs.
 
 4) **Comparative Analysis:** Compare layoffs across different sectors, companies, and regions to identify commonalities and disparities.
    
-5) **Visualization:** Create visualizations such as charts, graphs, and maps to present key findings and insights.
 
 # Tools and Technologies:
 
