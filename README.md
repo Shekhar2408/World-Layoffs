@@ -5,21 +5,21 @@
 The objective of this project is to analyze worldwide layoffs that occurred between 2020 and 2023, utilizing MySQL for data storage, management, and analysis. By examining the data on layoffs, the project aims to identify trends, patterns, and factors influencing employment changes globally during this period.
 
 # Data Sources:
- Gather data from reputable sources such as government reports, labor departments, news articles, and industry databases.
+1) Gather data from reputable sources such as government reports, labor departments, news articles, and industry databases.
 
-**Company Reports:**  Collect layoff information disclosed by companies through financial reports, press releases, and official statements.
+2) **Company Reports:**  Collect layoff information disclosed by companies through financial reports, press releases, and official statements.
 
-**Public Datasets:**  Utilize publicly available datasets containing information on workforce reductions and employment statistics.
+3) **Public Datasets:**  Utilize publicly available datasets containing information on workforce reductions and employment statistics.
 
-**Database Schema:** Design a MySQL database schema to efficiently store and manage the layoff data. The schema may include tables such as:
+4) **Database Schema:** Design a MySQL database schema to efficiently store and manage the layoff data. The schema may include tables such as:
 
-**Companies:** Information about the companies involved in layoffs (e.g., name, industry, location).
-
-**Layoffs:** Details of layoffs (e.g., date, number of employees affected, reasons).
-
-**Geographic Data:** Data related to geographic locations of layoffs (e.g., country, region).
-
-**Industry Data:** Information about industries affected by layoffs.
+    a) **Companies:** Information about the companies involved in layoffs (e.g., name, industry, location).
+    
+    b) **Layoffs:** Details of layoffs (e.g., date, number of employees affected, reasons).
+    
+    c) **Geographic Data:** Data related to geographic locations of layoffs (e.g., country, region).
+    
+    d) **Industry Data:** Information about industries affected by layoffs.
 
 **Data Processing:**
 
