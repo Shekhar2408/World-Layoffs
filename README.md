@@ -6,15 +6,22 @@ The objective of this project is to analyze worldwide layoffs that occurred betw
 
 # Data Sources:
 **Global Layoff Databases:**  Gather data from reputable sources such as government reports, labor departments, news articles, and industry databases.
+
 **Company Reports:**  Collect layoff information disclosed by companies through financial reports, press releases, and official statements.
+
 **Public Datasets:**  Utilize publicly available datasets containing information on workforce reductions and employment statistics.
+
 **Database Schema:** Design a MySQL database schema to efficiently store and manage the layoff data. The schema may include tables such as:
 
-Companies: Information about the companies involved in layoffs (e.g., name, industry, location).
-Layoffs: Details of layoffs (e.g., date, number of employees affected, reasons).
-Geographic Data: Data related to geographic locations of layoffs (e.g., country, region).
-Industry Data: Information about industries affected by layoffs.
-Data Processing:
+**Companies:** Information about the companies involved in layoffs (e.g., name, industry, location).
+
+**Layoffs:** Details of layoffs (e.g., date, number of employees affected, reasons).
+
+**Geographic Data:** Data related to geographic locations of layoffs (e.g., country, region).
+
+**Industry Data:** Information about industries affected by layoffs.
+
+**Data Processing:**
 
 Data Collection: Gather and compile data from various sources into a structured format suitable for MySQL.
 Data Cleaning: Perform data cleaning and validation to ensure accuracy and consistency.
